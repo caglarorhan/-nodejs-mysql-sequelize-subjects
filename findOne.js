@@ -12,17 +12,22 @@ const User = sequelize.define('user', {
     user_city: Sequelize.STRING
 })
 
+
 sequelize.sync().then(()=>{
     console.log('connected to db. Succeed');
+
+
     //User.findAll({}).then( (rows)=>{},()=>{} ) // bu yapida kullanilabilir, burada birinci fonksyion resolve(onfulfilled) ikincisi reject(onreject) icindir
     //User.findAll({}).then().catch(); // bu yapi da kullanilabilir
 
-    User.findAll({
-        attributes: ['user_name', 'user_city'],
-        order: [['user_name','DESC']],
-        raw: true
-    }).then( (rows)=>{
-        console.log(rows)
+    User.findOne({
+        raw: true,
+        where: {
+            user_city: 'Istanbul'
+        }
+    }).then( newUser=>{
+        console.log(newUser)
+        console.log('Veriler geldi!')
     },(err)=>{} )
 
 
