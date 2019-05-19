@@ -6,14 +6,6 @@ const sequelize = new Sequelize('nodejs','root','Wew8WRBCnolRwsaE',{
 })
 
 
-const User = sequelize.define('user', {
-    user_name: Sequelize.STRING,
-    user_password: Sequelize.STRING,
-    user_dob: Sequelize.DATE,
-    user_city: Sequelize.STRING
-})
-// createdAt and updatedAt fields are automatically added
-
 
 const Car = sequelize.define('car', {
     car_model: {
@@ -63,5 +55,6 @@ sequelize.sync().then(()=>{
 
     }).then( newCar=>{
         console.log(newCar.toJSON())
+        console.log('Veriler geldi!')
     } )
 })
